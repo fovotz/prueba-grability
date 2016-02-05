@@ -39,10 +39,9 @@ Y para la comunicación con el servidor se usó llamadas ajax con el método POS
 
 
 CODE REFACTORING
-<code>
-
+```
 public function post_confirm(){ 
-	
+
 	$id = Input::get('service_id'); 
 	$driverId = Input::get('driver_id'); 
 	$servicio = Service::find($id); 
@@ -86,7 +85,8 @@ public function post_confirm(){
 } else{
     return Response::json(array('error' => '3'))
 }
-</code>
+
+```
 1. Las malas practicas de programación en el código son:
 	- Se debe eliminar el código comentado
 	- Es mejor si se puede "cachear" variables locales si se van a usar en varias partes en vez de acceder al objeto donde se encuentran

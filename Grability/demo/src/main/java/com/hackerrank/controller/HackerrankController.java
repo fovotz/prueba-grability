@@ -12,12 +12,18 @@ import com.hackerrank.dto.Peticion;
 import com.hackerrank.dto.Respuesta;
 import com.hackerrank.service.MatrixService;
 
+/***************************************
+ * Clase controller para el mapeo de las url que exponen los serivios
+ **************************************/ 
 @Controller
 @RequestMapping("/prueba")
 public class HackerrankController {
 
+	/***************************************
+	 * Crea la matrix
+	 **************************************/ 
 	@RequestMapping(value = "/enviar", method = RequestMethod.POST)
-	public @ResponseBody Respuesta greeting(@RequestBody Peticion peticion) {
+	public @ResponseBody Respuesta crear(@RequestBody Peticion peticion) {
 		Respuesta r = new Respuesta();
 		r.setM(peticion.getM());
 		r.setN(peticion.getN());
@@ -27,6 +33,9 @@ public class HackerrankController {
 		return r;
 	}
 	
+	/***************************************
+	 * Realiza una operacion sobre la matrix
+	 **************************************/ 
 	@RequestMapping(value = "/accion", method = RequestMethod.POST)
 	public @ResponseBody Respuesta accion(@RequestBody Peticion peticion) {
 		Respuesta r = new Respuesta();

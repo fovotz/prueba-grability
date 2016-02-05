@@ -40,50 +40,51 @@ Y para la comunicación con el servidor se usó llamadas ajax con el método POS
 
 CODE REFACTORING
 <code>
-public function post_confirm(){
-	$id = Input::get('service_id');
-	$driverId = Input::get('driver_id');
-	$servicio = Service::find($id);
-	$driverTmp = Driver::find($driverId );
 
-	if($servicio != NULL){
-		$servicioStatus = $servicio->status_id;
-		if($servicioStatus =='6'){
+public function post_confirm(){ 
+	
+	$id = Input::get('service_id'); 
+	$driverId = Input::get('driver_id'); 
+	$servicio = Service::find($id); 
+	$driverTmp = Driver::find($driverId);
 
-			return Response::json(array('error' => '2'));
-		}
-		if($servicio->driver_id == null && $servicioStatus =='1'){
-			$servicio = Service::update($id, array(
-				'driver_id' => $driverId ,
-				'status_id' => '2'
-			));
+ if($servicio != NULL){
+    $servicioStatus = $servicio->status_id;
+    if($servicioStatus =='6'){
 
-			Driver::update($driverId ,array('available' => 0));
-			
-			Service::update($id, array(
-				'car_id' => $driverTmp => car_id
-			));
+        return Response::json(array('error' => '2'));
+    }
+    if($servicio->driver_id == null && $servicioStatus =='1'){
+        $servicio = Service::update($id, array(
+            'driver_id' => $driverId ,
+            'status_id' => '2'
+        ));
 
-			$pushMessage = 'Tu servicio ha sido confirmado';
+        Driver::update($driverId ,array('available' => 0));
 
-			$push = Pusk::make();
+        Service::update($id, array(
+            'car_id' => $driverTmp => car_id
+        ));
 
-			if($servicio->user->uuid == ''){
-				return Response::json(array('error' => '2'));
-			}
-			if($servicio->user->type == '1'){//iphone
-				$result = $push->ios(XXXXXXXX);
-			}else{
-				$result = $push->android2(XXXXXXXX);
-			}
+        $pushMessage = 'Tu servicio ha sido confirmado';
 
-			return Response::json(array('error' => '0'))
-		} else{
-			return Response::json(array('error' => '1'))
-		}
-	} else{
-		return Response::json(array('error' => '3'))
-	}
+        $push = Pusk::make();
+
+        if($servicio->user->uuid == ''){
+            return Response::json(array('error' => '2'));
+        }
+        if($servicio->user->type == '1'){//iphone
+            $result = $push->ios(XXXXXXXX);
+        }else{
+            $result = $push->android2(XXXXXXXX);
+        }
+
+        return Response::json(array('error' => '0'))
+    } else{
+        return Response::json(array('error' => '1'))
+    }
+} else{
+    return Response::json(array('error' => '3'))
 }
 </code>
 1. Las malas practicas de programación en el código son:

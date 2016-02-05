@@ -40,6 +40,19 @@ Y para la comunicación con el servidor se usó llamadas ajax con el método POS
 
 CODE REFACTORING
 ```
+```
+
+class Constants {
+
+	const R_ERROR_CODE_STATUS_OK = '0';
+	const R_ERROR_CODE_STATUS_UNO = '1';
+	const R_ERROR_CODE_STATUS_DOS = '2';
+	const R_ERROR_CODE_STATUS_TRES = '3';
+	const STATUS_SEIS = '6';
+	const STATUS_UNO = '6';
+	const UNO = '1';
+}
+
 public function post_confirm(){ 
 
 	$id = Input::get('service_id'); 
@@ -49,11 +62,11 @@ public function post_confirm(){
 
  if($servicio != NULL){
     $servicioStatus = $servicio->status_id;
-    if($servicioStatus =='6'){
+    if($servicioStatus == Constants::STATUS_SEIS){
 
-        return Response::json(array('error' => '2'));
+        return Response::json(array('error' => Constants::R_ERROR_CODE_STATUS_DOS));
     }
-    if($servicio->driver_id == null && $servicioStatus =='1'){
+    if($servicio->driver_id == null && $servicioStatus ==  Constants::STATUS_UNO){
         $servicio = Service::update($id, array(
             'driver_id' => $driverId ,
             'status_id' => '2'
@@ -70,21 +83,23 @@ public function post_confirm(){
         $push = Pusk::make();
 
         if($servicio->user->uuid == ''){
-            return Response::json(array('error' => '2'));
+            return Response::json(array('error' => R_ERROR_CODE_STATUS_DOS));
         }
-        if($servicio->user->type == '1'){//iphone
+        if($servicio->user->type == Constants::UNO){//iphone
             $result = $push->ios(XXXXXXXX);
         }else{
             $result = $push->android2(XXXXXXXX);
         }
 
-        return Response::json(array('error' => '0'))
+        return Response::json(array('error' => R_ERROR_CODE_STATUS_OK))
     } else{
-        return Response::json(array('error' => '1'))
+        return Response::json(array('error' => R_ERROR_CODE_STATUS_UNO))
     }
 } else{
-    return Response::json(array('error' => '3'))
+    return Response::json(array('error' => R_ERROR_CODE_STATUS_TRES))
 }
+
+```
 
 ```
 1. Las malas practicas de programación en el código son:

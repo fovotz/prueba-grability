@@ -11,7 +11,7 @@ Backend:
 
 Para el backend de la aplicación se usó aun arquitectura por capas definidas así.
 
-- Servicio: Clases presentes en el paquete (com.hackerrank.controller)
+- Servicio: Clases presentes en el paquete (com.hackerrank.service)
 - Presentación: Clases presentes en el paquete (com.hackerrank.controller)
 
 Descripción de clases.
@@ -119,6 +119,6 @@ public function post_confirm(){
 	- Bien comentado
 	- Bien indentado
 	- Los nombres de las clases, miembros y métodos deben ser consistentes con su función
-	- Alta cohesión en los objetos
+	- Alta cohesión en las clases
 	- Bajo acoplamiento.
 	

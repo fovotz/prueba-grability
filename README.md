@@ -101,10 +101,12 @@ public function post_confirm(){
 ```
 1. Las malas practicas de programación en el código son:
 	- Se debe eliminar el código comentado
+	- Código quemado en direfentes lugares, en el casi de las constantes se pueden definir en un mismo lugar
 	- Es mejor si se puede "cachear" variables locales si se van a usar en varias partes en vez de acceder al objeto donde se encuentran
 
 2. Mi refactorización supera lo anterior ya que:
 	- Elimino el código comentado
+	- Definí una clase de constantes
 	- "Cacheo" variable $driverId = Input::get('driver_id'); en vez de utilizar varias vecesInput::get('driver_id');
 
 

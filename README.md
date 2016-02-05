@@ -48,7 +48,7 @@ class Constants {
 	const R_ERROR_CODE_STATUS_DOS = '2';
 	const R_ERROR_CODE_STATUS_TRES = '3';
 	const STATUS_SEIS = '6';
-	const STATUS_UNO = '6';
+	const STATUS_UNO = '1';
 	const UNO = '1';
 }
 

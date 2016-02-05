@@ -5,64 +5,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.hackerrank.dto.MatrixWrapper;
-
+/**********************
+ * Clase encargada de exponer los servicios relacionado con la matrix
+ *********************/
 public class MatrixService {
 	
-	
+	//Map que conteine MatrixWrapper para manejar temas de concurrencia
 	public static Map<Integer, MatrixWrapper> map =  new HashMap<Integer, MatrixWrapper>();
 	
-	
-	
-	
-	public static void main(String[] args) {
-		Integer N = 4;
-		Integer M = 2;
-
-		MatrixWrapper mw = createMatrix(N);
-
-		
-		
-		update(mw.getId(), 2, 2, 2, 4);
-		query(mw.getId(), 1, 1, 1, 3, 3, 3);
-		update(mw.getId(), 1, 1, 1, 23);		
-		query(mw.getId(), 2, 2, 2, 4, 4, 4);
-		query(mw.getId(), 1, 1, 1, 3, 3, 3);
-		/*
-		UPDATE 2 2 2 4
-		QUERY 1 1 1 3 3 3
-		UPDATE 1 1 1 23
-		QUERY 2 2 2 4 4 4
-		QUERY 1 1 1 3 3 3
-		*/
-		
-		mw = createMatrix(2);
-		/*
-		UPDATE 2 2 2 1
-		QUERY 1 1 1 1 1 1
-		QUERY 1 1 1 2 2 2
-		QUERY 2 2 2 2 2 2
-		
-		4
-4
-27
-0
-1
-1
-
-
-		*/
-		update(mw.getId(), 2, 2, 2, 1);
-		query(mw.getId(), 1, 1, 1, 1, 1, 1);
-		query(mw.getId(), 1, 1, 1, 2, 2, 2);
-		query(mw.getId(), 2, 2, 2, 2, 2, 2);
-
-	}
-	
-	
-	
-	
-	
-	
+	/***********************************
+	 * Realiza la operacion QUERY sobre la matriz
+	 **********************************/ 
 	public static int query(int matrixId, int x1, int y1, int z1, int x2, int y2, int z2) {
 		int[][][] m = map.get(matrixId).getMatrix();
 		x1 = x1 - 1;
@@ -83,24 +36,20 @@ public class MatrixService {
 		System.out.println(suma);
 		return suma;
 	}
-
+	/***********************************
+	 * Realiza la operacion UPTDATE sobre la matriz
+	 **********************************/ 
 	public static void update(int matrixId, int x, int y, int z, int w) {
 		int[][][] m = map.get(matrixId).getMatrix();
-		
 		x = x - 1;
 		y = y - 1;
 		z = z - 1;
-		
-		System.out.println("UPDATE");
-		System.out.println("X " +x);
-		System.out.println("Y " +y);
-		System.out.println("Z " +z);
-		System.out.println("w " +w);
 		m[x][y][z] = w;
-		
-		System.out.println(Arrays.deepToString(map.get(matrixId).getMatrix()));
 	}
-
+	
+	/***********************************
+	 * Crea la matrix
+	 **********************************/ 
 	public static MatrixWrapper createMatrix(int N) {
 		MatrixWrapper mw = new MatrixWrapper();
 		mw.setMatrix(new int[N][N][N]);

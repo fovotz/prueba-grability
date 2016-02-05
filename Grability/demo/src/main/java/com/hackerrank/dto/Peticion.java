@@ -1,5 +1,8 @@
 package com.hackerrank.dto;
 
+/***********************
+ * Clase que representa la peticion del cliente
+ **********************/ 
 public class Peticion {
 	private int n;
 	private int casos;

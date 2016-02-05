@@ -40,7 +40,6 @@ Y para la comunicación con el servidor se usó llamadas ajax con el método POS
 
 CODE REFACTORING
 ```
-```
 
 class Constants {
 
@@ -98,8 +97,6 @@ public function post_confirm(){
 } else{
     return Response::json(array('error' => R_ERROR_CODE_STATUS_TRES))
 }
-
-```
 
 ```
 1. Las malas practicas de programación en el código son:

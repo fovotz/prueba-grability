@@ -1,5 +1,8 @@
 package com.hackerrank.dto;
 
+/***********************
+ * Clase que representa la respuesta del cliente
+ **********************/ 
 public class Respuesta {
 	private String msgError;
 	private boolean error;

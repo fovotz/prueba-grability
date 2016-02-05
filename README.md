@@ -113,7 +113,7 @@ public function post_confirm(){
 
 
 
-1. La responsabilidad única consiste en implementar nuestros objetos con responsabilidades definidas (alta cohesión) y que la dependencia con otros objetos sea mínima (bajo acoplamiento) como beneficio fundamental nos ayuda a que cuando se requiera realizar un cambio en el código sea lo menos costoso posible
+1. La responsabilidad única consiste en implementar nuestros objetos con responsabilidades definidas (alta cohesión) y que la dependencia con otros objetos sea mínima (bajo acoplamiento) esto nos ayuda principalemente a que cuando se requiera realizar un cambio en el código sea lo menos costoso posible ya que podemos identifcar con facilidad donde debemos realizar dicho cambio.
 
 2. Para que un código sea bueno o limpio, en mi opinión debe tener lo siguiente:
 	- Bien comentado
